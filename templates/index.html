@@ -13,23 +13,38 @@
       *{
         font-family: 'Radio Canada', sans-serif;
       }
+      *::-webkit-scrollbar{
+        width:5px;
+        background: #001112;
+      }
+      *::-webkit-scrollbar-thumb{
+        border-radius: 300px;
+        background:aqua;
+        
+      }
+      body{
+        background:#001112;
+      }
       .title{
         font-size:3rem;
         font-weight: 100;
         margin: 20px;
+        color:aqua
       }
       .column{
         position:absolute;
         top:40%;
         left:50%;
         transform: translate(-50%,-50%);
-        height:60vh;
+        height:50vh;
       }
       .no_msg_t{
         font-weight: 100;
+        font-size: 25px;
         position:absolute;
         top:10%;
         left:50%;
+        color:aqua;
         transform: translate(-50%,-50%);
       }
       .username{
@@ -37,7 +52,8 @@
         top:80%;
         left:50%;
         transform: translate(-50%,-50%);
-        border:1px solid black;
+        background-color: #001112;
+        border:2px solid aqua;
         outline:none;
         padding:20px;
         border-radius: 300px;
@@ -48,7 +64,8 @@
         top:90%;
         left:50%;
         transform: translate(-50%,-50%);
-        border:1px solid black;
+        background-color: #001112;
+        border:2px solid aqua;
         outline:none;
         padding:20px;
         border-radius: 300px;
@@ -60,7 +77,7 @@
         left:74%;
         transform: translate(-50%,-50%);
         border: none;
-        background: #fff;
+        background: #001112;
         outline:none;
         padding:10px;
         border-radius: 300px;
@@ -69,7 +86,18 @@
       .message_holder{
         height:55vh;
         overflow: scroll;
+        overflow-x: hidden;
         width:80vw;
+      }
+      .msg_bbl{
+        color:aqua;
+        margin-left:10vw;
+      }
+      input{
+        color:aqua
+      }
+      input::placeholder{
+        color:aqua
       }
     </style>
   </head>
@@ -92,7 +120,7 @@
           <input type="text" class="username form-control" placeholder="User Name">
           <input type="text" class="message form-control" placeholder="Type what's on your brain . . .">
           <button type="submit" class="btn btn-success btn-block">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="aqua" class="bi bi-send" viewBox="0 0 16 16">
               <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
             </svg>
           </button>
@@ -105,6 +133,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.js"></script>
     <script>
+      
       var socket = io.connect( 'http://' + document.domain + ':' + location.port )
       // broadcast a message
       socket.on( 'connect', function() {
