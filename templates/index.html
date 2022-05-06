@@ -9,97 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-      *{
-        font-family: 'Radio Canada', sans-serif;
-      }
-      *::-webkit-scrollbar{
-        width:5px;
-        background: #001112;
-      }
-      *::-webkit-scrollbar-thumb{
-        border-radius: 300px;
-        background:aqua;
-        
-      }
-      body{
-        background:#001112;
-      }
-      .title{
-        font-size:3rem;
-        font-weight: 100;
-        margin: 20px;
-        color:aqua
-      }
-      .column{
-        position:absolute;
-        top:40%;
-        left:50%;
-        transform: translate(-50%,-50%);
-        height:50vh;
-      }
-      .no_msg_t{
-        font-weight: 100;
-        font-size: 25px;
-        position:absolute;
-        top:10%;
-        left:50%;
-        color:aqua;
-        transform: translate(-50%,-50%);
-      }
-      .username{
-        position:absolute;
-        top:80%;
-        left:50%;
-        transform: translate(-50%,-50%);
-        background-color: #001112;
-        border:2px solid aqua;
-        outline:none;
-        padding:20px;
-        border-radius: 300px;
-        width: 50vw;
-      }
-      .message{
-        position:absolute;
-        top:90%;
-        left:50%;
-        transform: translate(-50%,-50%);
-        background-color: #001112;
-        border:2px solid aqua;
-        outline:none;
-        padding:20px;
-        border-radius: 300px;
-        width: 50vw;
-      }
-      button{
-        position:absolute;
-        top:90%;
-        left:74%;
-        transform: translate(-50%,-50%);
-        border: none;
-        background: #001112;
-        outline:none;
-        padding:10px;
-        border-radius: 300px;
-        cursor:pointer
-      }
-      .message_holder{
-        height:55vh;
-        overflow: scroll;
-        overflow-x: hidden;
-        width:80vw;
-      }
-      .msg_bbl{
-        color:aqua;
-        margin-left:10vw;
-      }
-      input{
-        color:aqua
-      }
-      input::placeholder{
-        color:aqua
-      }
-    </style>
+    <link rel="stylesheet" href="../static/css/style.css">
   </head>
   <body>
 
@@ -132,35 +42,6 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.js"></script>
-    <script>
-      
-      var socket = io.connect( 'http://' + document.domain + ':' + location.port )
-      // broadcast a message
-      socket.on( 'connect', function() {
-        socket.emit( 'my event', {
-          data: 'User Connected'
-        } )
-        var form = $( 'form' ).on( 'submit', function( e ) {
-          e.preventDefault()
-          let user_name = $( 'input.username' ).val()
-          let user_input = $( 'input.message' ).val()
-          socket.emit( 'my event', {
-            user_name : user_name,
-            message : user_input
-          } )
-          // empty the input field
-          $( 'input.message' ).val( '' ).focus()
-        } )
-      } )
-
-      // capture message
-      socket.on( 'my response', function( msg ) {
-        console.log( msg )
-        if( typeof msg.user_name !== 'undefined' ) {
-          $( 'h1' ).remove()
-          $( 'div.message_holder' ).append( '<div class="msg_bbl"><p>'+'<span style="font-weight:bold">'+msg.user_name+'</span>'+':  '+'<span align="center">'+msg.message+'</span>'+'</p> '+'</div>' )
-        }
-      } )
-    </script>
+    <script src="../static/js/script.js"></script>
   </body>
 </html>
