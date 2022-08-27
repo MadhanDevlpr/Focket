@@ -35,18 +35,6 @@
     color:aqua;
     transform: translate(-50%,-50%);
   }
-  .username{
-    position:absolute;
-    top:80%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    background-color: #001112;
-    border:2px solid aqua;
-    outline:none;
-    padding:20px;
-    border-radius: 300px;
-    width: 50vw;
-  }
   .message{
     position:absolute;
     top:90%;
@@ -55,7 +43,7 @@
     background-color: #001112;
     border:2px solid aqua;
     outline:none;
-    padding:20px;
+    padding:10px 20px;
     border-radius: 300px;
     width: 50vw;
   }
@@ -65,7 +53,7 @@
     left:74%;
     transform: translate(-50%,-50%);
     border: none;
-    background: #001112;
+    background: transparent;
     outline:none;
     padding:10px;
     border-radius: 300px;
@@ -77,6 +65,9 @@
     overflow-x: hidden;
     width:80vw;
   }
+  img{
+    background: transparent;
+  }
   .msg_bbl{
     color:aqua;
     margin-left:10vw;
@@ -87,3 +78,10 @@
   input::placeholder{
     color:aqua
   }
+
+@media (max-width: 500px){
+  .no_msg_t{
+    font-size: 15px;
+    white-space: nowrap;
+  }
+}

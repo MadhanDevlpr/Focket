@@ -1,3 +1,16 @@
+name = window.prompt('Enter your username')
+if (name ==''){
+  window.alert('Enter a name to enter the server.')
+  while (true){
+    name = window.prompt('Enter your username')
+    if (name==''){
+      window.alert('Enter a name to enter the server.')
+    }
+    else{
+      break
+    }
+  }
+}
 var socket = io.connect( 'http://' + document.domain + ':' + location.port )
 // broadcast a message
 socket.on( 'connect', function() {
@@ -6,7 +19,7 @@ socket.on( 'connect', function() {
   } )
   var form = $( 'form' ).on( 'submit', function( e ) {
     e.preventDefault()
-    let user_name = $( 'input.username' ).val()
+    let user_name = name
     let user_input = $( 'input.message' ).val()
     socket.emit( 'my event', {
       user_name : user_name,
